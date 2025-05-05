@@ -1,7 +1,6 @@
 import express from "express";
 import bookRoutes from "./routes/book.routes.js"
 import authRoutes from "./routes/auth.routes.js"
-import authRoutes from "./routes/auth.routes.js"
 import { PORT } from "./config.js"
 import { sequelize } from "./db.js";
 import "./models/Book.js";
