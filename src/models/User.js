@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db.js";
+import { UserRoles } from '../enums/enums.js';
 
 export const User = sequelize.define("user", {
     id: {
@@ -9,16 +10,21 @@ export const User = sequelize.define("user", {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
+        allowNull: false
     },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
+    },
+    role: {
+        type: DataTypes.ENUM(Object.values(UserRoles)), 
+        allowNull: false,
+        defaultValue: UserRoles.USER,
     }
-
-}, { timestamps: false });
+}, {
+    timestamps: false
+});
